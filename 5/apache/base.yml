@@ -35,6 +35,11 @@ services:
       - WORDPRESS_DB_USER
       - WORDPRESS_DB_PASSWORD
       - WORDPRESS_DB_NAME
+      - VSITE_SITE_NAME
+      - VSITE_ADMIN_MAIL
+      - VSITE_ADMIN_NAME
+      - VSITE_DOMAIN
+
     depends_on:
       - vsql
       - vhttp
