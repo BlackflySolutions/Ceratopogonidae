@@ -1,5 +1,4 @@
 #!/bin/bash
 # simple script to launch mysql as root
-echo "db: ${MYSQL_DATABASE}";
-echo "civicrm db: ${CIVICRM_DATABASE}";
-mysql -u root -p$MYSQL_PASSWORD -h vsql $MYSQL_DATABASE
+echo "db: ${WORDPRESS_DB_NAME}";
+mysql -u root -p$WORDPRESS_DB_PASSWORD -h vsql $WORDPRESS_DB_NAME

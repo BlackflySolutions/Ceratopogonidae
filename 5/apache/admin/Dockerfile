@@ -8,6 +8,7 @@ RUN apt-get update \
 COPY wp-cli.phar /usr/local/bin/wp
 COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
 COPY core-install.sh /usr/local/bin/core-install.sh
+COPY admindb.sh /usr/local/bin/admindb.sh
 RUN chmod ugo+x /usr/local/bin/wp && chmod ugo+x /usr/local/bin/*.sh 
 # provide a non-root user to own drupal code
 RUN useradd -u 1978 -g www-data -ms /bin/bash drupal
