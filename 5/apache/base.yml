@@ -3,7 +3,7 @@ version: '3.4'
 services:
 
   vhttp:
-    image: wordpress:5-php7.2-apache
+    image: wordpress:5-php7.2-apache-wordpress
     ports:
       - "80/tcp"
     expose:
@@ -13,6 +13,9 @@ services:
       - WORDPRESS_DB_USER
       - WORDPRESS_DB_PASSWORD
       - WORDPRESS_DB_NAME
+      - VSITE
+      - VSITE_DOMAIN
+      - VSITE_DOMAIN_ALTERNATIVES
     volumes:
       - vwp:/var/www/html/wp-content
 
@@ -38,7 +41,9 @@ services:
       - VSITE_SITE_NAME
       - VSITE_ADMIN_MAIL
       - VSITE_ADMIN_NAME
+      - VSITE
       - VSITE_DOMAIN
+      - VSITE_DOMAIN_ALTERNATIVES
 
     depends_on:
       - vsql

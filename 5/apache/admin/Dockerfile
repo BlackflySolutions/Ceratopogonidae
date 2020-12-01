@@ -1,9 +1,9 @@
 #ARG REPOSITORY_FROM=blackflysolutions/
 ARG REPOSITORY_FROM=""
-FROM ${REPOSITORY_FROM}wordpress:5-php7.2-apache
+FROM ${REPOSITORY_FROM}wordpress:5-php7.2-apache-wordpress
 # an extended version of the webserver image, adding extra packages and scripts
 RUN apt-get update \
-  && apt-get install -y mariadb-client sudo vim git zip unzip netcat \
+  && apt-get install -y mariadb-client sudo vim git zip unzip netcat rsync \
   && apt-get purge -y
 COPY wp-cli.phar /usr/local/bin/wp
 COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
