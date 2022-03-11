@@ -1,0 +1,55 @@
+version: '3.4'
+
+services:
+
+  vhttp:
+    image: wordpress:5-php7.2-apache-wordpress
+    ports:
+      - "80/tcp"
+    expose:
+      - "80"
+    environment:
+      - WORDPRESS_DB_HOST
+      - WORDPRESS_DB_USER
+      - WORDPRESS_DB_PASSWORD
+      - WORDPRESS_DB_NAME
+      - VSITE
+      - VSITE_DOMAIN
+      - VSITE_DOMAIN_ALTERNATIVES
+    volumes:
+      - vwp:/var/www/html/wp-content
+
+  vsql:
+    image: blackflysolutions/mariadb:10.2
+    environment:
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+    volumes:
+      - vdb:/var/lib/mysql
+
+  admin:
+    image: wordpress:5-php7.2-apache-admin
+    volumes:
+      - vwp:/var/www/html/wp-content
+    environment:
+      - WORDPRESS_DB_HOST
+      - WORDPRESS_DB_USER
+      - WORDPRESS_DB_PASSWORD
+      - WORDPRESS_DB_NAME
+      - VSITE_SITE_NAME
+      - VSITE_ADMIN_MAIL
+      - VSITE_ADMIN_NAME
+      - VSITE
+      - VSITE_DOMAIN
+      - VSITE_DOMAIN_ALTERNATIVES
+
+    depends_on:
+      - vsql
+      - vhttp
+
+
+volumes:
+  vwp:
+  vdb:
