@@ -1,5 +1,8 @@
 *.bak
 *.dist
+[5]/apache/php*/*.yml
+![5]/apache/php*/base.yml
+![5]/apache/php*/-*.yml
 [5]/*/*.yml
 ![5]/*/base.yml
 ![5]/*/-*.yml
